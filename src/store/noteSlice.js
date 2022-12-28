@@ -12,9 +12,16 @@ const noteSlice = createSlice({
       state.notes = action.payload;
     },
   },
+  setDeleteNote: (state, action) => {
+    state.notes = [
+      ...state.notes.filter((note) => {
+        return note.id !== action.payload;
+      }),
+    ];
+  },
 });
 
 //Actions Creators
-export const { setNotes } = noteSlice.actions;
+export const { setNotes, setDeleteNote } = noteSlice.actions;
 
 export default noteSlice.reducer;

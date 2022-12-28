@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./expressStyle.css";
-import { setNotes } from "../../store/noteSlice.js";
+import { setNotes, setDeleteNote } from "../../store/noteSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -23,11 +23,11 @@ const Express = () => {
   //save the notes in the local state first.
   const [note, setNote] = useState([]);
   const [savedNotes, setSavedNotes] = useState([]);
-  console.log(note);
+
   //Selectors
   //transfer or save the local notes in the redux state.
   const notes = useSelector((state) => state.note.notes);
-  console.log(notes);
+
   useEffect(() => {
     handleListen();
   }, [isListening]);
@@ -59,32 +59,31 @@ const Express = () => {
         .join("");
       console.log(transcript);
       setNote(transcript);
-      // dispatch(setNotes(transcript));
       mic.onerror = (event) => {
         console.log(event.error);
       };
     };
   };
-
+  const fetchSingleNote = async (id) => {
+    dispatch(setDeleteNote(id));
+    const { data, deleted } = await axios.delete(`/api/notes/${id}`, {});
+    navigate("/notes");
+  };
+  /* handleSaveNote  is a function that takes no paramter. 
+  It calls the axios post method and send the new note to be saved in the database. 
+  It update savedNotes with the new notes the user adds. 
+  It updates the redus states with the new note. 
+  It sets setNote to empty string at the end. 
+   */
   const handleSaveNote = async () => {
-    //keep the notes in a varaible.
-    // const newNotes = note;
-
     //call the post api to save notes.
-    //update the redux state with the new notes
     await axios.post(`/api/notes`, { note });
-    const allNotes = await axios.get("/api/notes");
-    // const allSavedNotes = setSavedNotes([...savedNotes, newNotes]);
-    // dispatch(setNotes(allSavedNotes));
-    // setNote("");
+    //first save the notes locally, then save them in redux state.
+    setSavedNotes([...savedNotes, note]);
+    dispatch(setNotes([...savedNotes, note]));
+    setNote("");
   };
 
-  useEffect(() => {
-    handleSaveNote();
-  }, [notes]);
-  console.log("savedNotes", savedNotes);
-  console.log("note", note);
-  console.log("notes", notes);
   return (
     <>
       <h1>voice Notes</h1>
@@ -105,7 +104,16 @@ const Express = () => {
 
         <div className="box">
           <h2>Notes</h2>
-          {notes && notes?.map((n) => <p key={n}>{n}</p>)}
+          {notes.map((n) => (
+            <>
+              <button onClick={() => fetchSingleNote(n.id)}>Delete</button>
+              <button>Edit</button>
+              <p key={n}>
+                {n}, {n.id}
+              </p>
+              <p key={n}>{n.id}</p>
+            </>
+          ))}
         </div>
       </div>
     </>
