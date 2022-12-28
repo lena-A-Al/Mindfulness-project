@@ -20,12 +20,15 @@ const CreateUser = () => {
   };
 
   const handleSubmit = async (event) => {
+    console.log("*****hello1");
+
     event.preventDefault();
     await axios.post("/api/users", {
       username: credentials.username,
       password: credentials.password,
       email: credentials.email,
     });
+    console.log("*****hello2");
     navigate("/login");
   };
   return (

@@ -5,7 +5,11 @@ import Logout from "./Logout";
 import CreateUser from "./CreateUser";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
+import Navbar from "./navbar/Navbar";
+import Express from "./express/Express";
+import Mediate from "./mediate/Mediate";
+import Walk from "./walk/Walk";
+import Give from "./give/Give";
 /**
  * This is the entry point for all of our react stuff
  */
@@ -33,21 +37,18 @@ const App = () => {
   }, []);
 
   // if the user not log in, redirect them to the log in page to log in inot the website.
-  if (!user.id) return <Login />;
+  // if (!user.id) return <Login />;
   return (
     <>
-      <h1>Welcome to my solor project {user.username}</h1>
-      <div>
-        <Link to="">Home</Link>
-        <Link to="login">Login</Link>
-        <Link to="logout">Logout</Link>
-        <Link to="createuser">Create User</Link>
-      </div>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<h3>Welcome to home page</h3>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
         <Route path="/createuser" element={<CreateUser />}></Route>
+        <Route path="/express" element={<Express />}></Route>
+        <Route path="/mediate" element={<Mediate />}></Route>
+        <Route path="/walk" element={<Walk />}></Route>
+        <Route path="/give" element={<Give />}></Route>
       </Routes>
     </>
   );

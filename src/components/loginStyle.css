@@ -15,17 +15,33 @@ body {
 .login-section {
   background-color: rgb(228, 248, 248);
   /* flex-grow flex shrink flex-basis only takes 40% and do not shrink or grow*/
-  flex: 0 0 40%;
+  flex: 0 0 60%;
   height: 100vh;
 }
 
 .image-section {
-  /* background-color: rgb(3, 32, 32); */
+  width: 70%;
 }
 
 .image-section img {
   width: 100%;
-  justify-content: center;
+  padding-top: 150px;
+}
+
+.form-section {
+  width: 50%;
+  display: flex;
   align-items: center;
-  padding-top: 200px;
+  justify-content: center;
+  /* background-color: rgb(210, 223, 223); */
+  align-content: center;
+  padding-right: 200px;
+  padding-top: 220px;
+}
+
+.website-name {
+  /* padding-top: 100px; */
+}
+.website-name h1 {
+  text-align: center;
 }
