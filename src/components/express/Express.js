@@ -18,17 +18,16 @@ const Express = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //Selectors
-  const notes = useSelector((state) => state.note);
-  console.log(notes);
-
   //local States
   const [isListening, setIsListening] = useState(false);
-  const [note, setNote] = useState(null);
+  //save the notes in the local state first.
+  const [note, setNote] = useState([]);
   const [savedNotes, setSavedNotes] = useState([]);
   console.log(note);
-  console.log(savedNotes);
-
+  //Selectors
+  //transfer or save the local notes in the redux state.
+  const notes = useSelector((state) => state.note.notes);
+  console.log(notes);
   useEffect(() => {
     handleListen();
   }, [isListening]);
@@ -53,12 +52,14 @@ const Express = () => {
     };
 
     mic.onresult = (event) => {
+      console.log("event.results", event.results);
       const transcript = Array.from(event.results)
         .map((result) => result[0])
         .map((result) => result.transcript)
         .join("");
       console.log(transcript);
       setNote(transcript);
+      // dispatch(setNotes(transcript));
       mic.onerror = (event) => {
         console.log(event.error);
       };
@@ -67,16 +68,23 @@ const Express = () => {
 
   const handleSaveNote = async () => {
     //keep the notes in a varaible.
-    const newNotes = note;
+    // const newNotes = note;
 
     //call the post api to save notes.
     //update the redux state with the new notes
-    await axios.post(`/api/notes`, { newNotes });
-    setSavedNotes([...savedNotes, newNotes]);
-    dispatch(setNotes(newNotes));
-    setNote("");
+    await axios.post(`/api/notes`, { note });
+    const allNotes = await axios.get("/api/notes");
+    // const allSavedNotes = setSavedNotes([...savedNotes, newNotes]);
+    // dispatch(setNotes(allSavedNotes));
+    // setNote("");
   };
-  console.log(notes);
+
+  useEffect(() => {
+    handleSaveNote();
+  }, [notes]);
+  console.log("savedNotes", savedNotes);
+  console.log("note", note);
+  console.log("notes", notes);
   return (
     <>
       <h1>voice Notes</h1>
@@ -97,9 +105,7 @@ const Express = () => {
 
         <div className="box">
           <h2>Notes</h2>
-          {savedNotes.map((n) => (
-            <p key={n}>{n}</p>
-          ))}
+          {notes && notes?.map((n) => <p key={n}>{n}</p>)}
         </div>
       </div>
     </>
