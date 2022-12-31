@@ -29,67 +29,125 @@ body {
   line-height: 2;
 }
 
-.question-answer-section {
+.question-section,
+.emotions-section {
   display: flex;
+  align-items: center;
   justify-content: center;
-  align-items: center;
 }
 
-.emotion-title {
+.emotions-section img {
+  width: 10%;
+}
+
+.question-section h2 {
+  padding: 30px 0px;
+}
+
+.start-stop-section {
   display: flex;
-  flex-direction: column;
-}
-
-.question-answer-section {
-  padding-left: 90px;
-}
-
-.speak,
-.stop-button {
-  padding: 20px;
-  /* background-color: rgb(218, 230, 222); */
-}
-
-.buttons-section {
-  display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  justify-content: center;
 }
-.save-note-button Button,
-.start-stop-button Button,
-.old-feeling-button Button {
+.start-stop-section button {
+  background-color: #ff4f58ff;
   color: #000000;
   border-radius: 10px / 30px;
   width: 200px;
   margin: 20px;
 }
 
-.save-note-button button {
+.start-stop-icons .speak-icon,
+.start-stop-icons .stop-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.present-speaking-notes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loading-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+.loading-message,
+.thanks-sharing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.loading-message h3 {
+  color: blueviolet;
+}
+/* .question-answer-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+/* .emotion-title {
+  display: flex;
+  flex-direction: column;
+} */
+/* 
+.question-answer-section {
+  padding-left: 90px;
+} */
+
+/* .speak,
+.stop-button {
+  padding: 20px;
+} */
+
+/* .buttons-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+} */
+/* .save-note-button Button,
+.start-stop-button Button,
+.old-feeling-button Button {
+  color: #000000;
+  border-radius: 10px / 30px;
+  width: 200px;
+  margin: 20px;
+} */
+
+/* .save-note-button button {
   background-color: #669db3ff;
-}
+} */
 
-.start-stop-button button {
+/* .start-stop-button button {
   background-color: #ff4f58ff;
-}
+} */
 
-.old-feeling-button {
+/* .old-feeling-button {
   background-color: #9ed9ccff;
-}
-.speaking-notes {
+} */
+/* .speaking-notes {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
-}
-.current-speaking-notes {
+} */
+/* .current-speaking-notes {
   border: 1px solid rgb(152, 146, 146);
   width: 60%;
   border-radius: 5px 20px 5px;
-}
+} */
 
-.old-notes-section {
+/* .old-notes-section {
   width: 30%;
   display: flex;
   justify-content: start;
   flex-direction: row;
-}
+} */

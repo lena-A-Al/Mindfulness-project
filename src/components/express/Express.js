@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Tooltip from "@mui/material/Tooltip";
-import KeyboardVoiceIcon from "@mui/icons-material/KeyboardVoice";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const speechRecognition =
   window.speechRecognition || window.webkitSpeechRecognition;
@@ -119,20 +119,6 @@ const Express = () => {
     setNote("");
   };
 
-  if (showOldNotes) {
-    <div className="box">
-      <h2>Notes</h2>
-      {notes.map((singleNote) => (
-        <div key={singleNote.id}>
-          <button onClick={() => deleteSingleNoteHandler(singleNote.id)}>
-            Delete
-          </button>
-          <button>Edit</button>
-          <p key={singleNote.id}>{singleNote.note}</p>
-        </div>
-      ))}
-    </div>;
-  }
   return (
     <>
       <div className="express-section">
@@ -150,37 +136,75 @@ const Express = () => {
             feeling.
           </p>
         </div>
-        {/* <div className="container">
-        <div className="box">
-          <h2>Current Note:</h2>
-          {isListening ? <span>🎙️</span> : <span>🛑🎙️</span>}
-          <button onClick={handleSaveNote} disabled={!note}>
-            Save Note
-          </button>
-          <button
-            onClick={() => setIsListening((previousState) => !previousState)}
-          >
-            Start/Stop
-          </button>
-          <p>{note}</p>
-        </div>
-
-        <div className="box">
-          <h2>Notes</h2>
-          {notes.map((singleNote) => (
-            <div key={singleNote.id}>
-              <button onClick={() => deleteSingleNoteHandler(singleNote.id)}>
-                Delete
-              </button>
-              <button>Edit</button>
-              <p key={singleNote.id}>{singleNote.note}</p>
-            </div>
-          ))}
-        </div>
-      </div> */}
+      </div>
+      <div className="emotions-section ">
+        <img
+          className="emtions"
+          src="images/emotion.png"
+          alt="emotion"
+          width="25%"
+        />
+      </div>
+      <div className="question-section">
+        <Tooltip
+          title={
+            <>
+              <div className="emotion-title">
+                <div>
+                  <h2>[Express your feeling freely!!]</h2>
+                </div>
+                <div>
+                  <img src="images/emotion.png" alt="emotion" width="25%" />
+                </div>
+              </div>
+            </>
+          }
+        >
+          <div>
+            <h2>How do you feel today?</h2>
+          </div>
+        </Tooltip>
+      </div>
+      <div className="start-stop-section">
+        <Button
+          onClick={() => setIsListening((previousState) => !previousState)}
+        >
+          Start/Stop
+        </Button>
+      </div>
+      <div className="start-stop-icons">
+        {isListening ? (
+          <div className="speak-icon">
+            <img src="images/speak.png" width="5%" alt="" />
+          </div>
+        ) : (
+          <div className="stop-icon">
+            <img src="images/stop-button.png" width="5%" alt="" />
+          </div>
+        )}
       </div>
 
-      <div className="question-answer-section">
+      <div className="present-speaking-notes">
+        <p>{note}</p>
+      </div>
+
+      <div className="loading-indicator">
+        {isListening && <CircularProgress color="success" />}
+      </div>
+
+      <div className="loading-message">
+        {isListening && <h3>I am trying to help you, give me few seconds!!</h3>}
+      </div>
+
+      <div className="thanks-sharing">
+        {note.length > 0 && !isListening && (
+          <h5>
+            thank you for sharing your feeling with me, let me check your
+            feeling!!
+          </h5>
+        )}
+      </div>
+      {/* <div className="question-answer-section">
         <div>
           <Tooltip
             title={
@@ -245,7 +269,7 @@ const Express = () => {
       </div>
       <div className="speaking-notes">
         <p className="current-speaking-notes">{note}</p>
-      </div>
+      </div> */}
     </>
   );
 };
