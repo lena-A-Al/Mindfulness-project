@@ -10,6 +10,8 @@ import Express from "./express/Express";
 import Mediate from "./mediate/Mediate";
 import Walk from "./walk/Walk";
 import Give from "./give/Give";
+import Home from "./home/Home";
+import "./appStyle.css";
 /**
  * This is the entry point for all of our react stuff
  */
@@ -42,6 +44,7 @@ const App = () => {
     <>
       <Navbar />
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/logout" element={<Logout />}></Route>
         <Route path="/createuser" element={<CreateUser />}></Route>

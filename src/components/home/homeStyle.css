@@ -1,0 +1,47 @@
+.main-page-color {
+  background-color: rgb(243, 248, 245);
+}
+
+.home-section {
+  display: flex;
+  margin: 80px 50px;
+}
+
+.left-section {
+  flex-grow: 2;
+  padding: 100px 0px;
+}
+.left-section p {
+  line-height: 3;
+  margin-right: 20px;
+  font-style: italic;
+}
+
+.right-section {
+  flex-grow: 3;
+}
+
+.right-section img {
+  padding: 60px 0px;
+  width: 800px;
+  border-radius: 30%;
+  box-shadow: 2px 2px 2px 1px rgba(163, 160, 158, 0.7);
+}
+
+footer {
+  background-color: #8bbee8ff;
+  color: rgb(49, 44, 44);
+  line-height: 1.5;
+  padding: 50px;
+}
+
+.ft-social-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 50px;
+}
+.ft-social-list li {
+  padding: 0 50px;
+  list-style: none;
+}

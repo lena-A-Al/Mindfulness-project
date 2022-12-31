@@ -63,7 +63,7 @@ const Login = () => {
       <div className="form-section">
         <form onSubmit={handleLoginSubmit}>
           <div className="website-name">
-            <h1 className="website-name">Hello</h1>
+            <h3>MINDFULness</h3>
           </div>{" "}
           <Box
             display="flex"

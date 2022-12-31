@@ -2,23 +2,94 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New";
 }
 
 body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-.container {
-  margin: 20px;
-  display: grid;
-  grid-template-columns: 2fr 2fr;
+.express-section {
+  padding: 80px 30px;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+.express-section .first-image img {
+  width: 200px;
+  padding: 40px 0px;
 }
 
-.box {
-  box-shadow: -4px 10px 35px -1px rgba(0, 0, 0, 0.75);
-  min-height: 20rem;
-  margin: 30px;
+.express-title-section {
+  background-color: rgb(243, 248, 245);
+}
+.express-title-section h2,
+.express-title-section p {
   padding: 20px;
-  border-radius: 5px;
+  line-height: 2;
+}
+
+.question-answer-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emotion-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-answer-section {
+  padding-left: 90px;
+}
+
+.speak,
+.stop-button {
+  padding: 20px;
+  /* background-color: rgb(218, 230, 222); */
+}
+
+.buttons-section {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.save-note-button Button,
+.start-stop-button Button,
+.old-feeling-button Button {
+  color: #000000;
+  border-radius: 10px / 30px;
+  width: 200px;
+  margin: 20px;
+}
+
+.save-note-button button {
+  background-color: #669db3ff;
+}
+
+.start-stop-button button {
+  background-color: #ff4f58ff;
+}
+
+.old-feeling-button {
+  background-color: #9ed9ccff;
+}
+.speaking-notes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.current-speaking-notes {
+  border: 1px solid rgb(152, 146, 146);
+  width: 60%;
+  border-radius: 5px 20px 5px;
+}
+
+.old-notes-section {
+  width: 30%;
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
 }

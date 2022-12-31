@@ -5,25 +5,30 @@
 }
 
 .site-title {
-  font-size: 100px;
+  font-size: 30px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 .nav {
-  background-color: antiquewhite;
+  background-color: rgb(240, 212, 246);
   color: rgb(25, 23, 23);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2em;
-  padding: 0 1rem;
+  /* gap: 2em; */
+  padding: 2rem 1rem;
+  font-family: Montserrat, Impact, Haettenschweiler, "Arial Narrow Bold",
+    sans-serif;
 }
 
 .nav ul {
   list-style: none;
   display: flex;
-  justify-content: space-around;
-  gap: 12rem;
+  /* justify-content: space-between; */
+  gap: 10rem;
 }
 .nav ul li {
+  /* justify-content: space-between; */
+
   /* padding: 20px; */
 
   /* justify-content: space-around; */

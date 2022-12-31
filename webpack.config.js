@@ -12,6 +12,7 @@ module.exports = {
       directory: __dirname + "/public",
     },
   },
+
   module: {
     rules: [
       {

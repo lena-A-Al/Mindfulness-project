@@ -42,6 +42,9 @@ body {
 .website-name {
   /* padding-top: 100px; */
 }
-.website-name h1 {
+.website-name h3 {
   text-align: center;
+  color: rgb(215, 92, 10);
+  letter-spacing: 2px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
