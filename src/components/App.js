@@ -39,7 +39,7 @@ const App = () => {
   }, []);
 
   // if the user not log in, redirect them to the log in page to log in inot the website.
-  if (!user.id) return <Login />;
+  // if (!user.id) return <Login />;
   return (
     <>
       <Navbar />
