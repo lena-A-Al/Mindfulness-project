@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./expressStyle.css";
 import { setNotes, setDeleteNote, setScore } from "../../store/noteSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +14,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Link } from "react-router-dom";
-
+import "./expressStyle.css";
 const speechRecognition =
   window.speechRecognition || window.webkitSpeechRecognition;
 
@@ -236,7 +235,7 @@ const Express = () => {
                 <TableCell>Your Feelings</TableCell>
                 <TableCell>Emotion Status</TableCell>
                 <TableCell>Our recommendation</TableCell>
-                <TableCell>Update</TableCell>
+                <TableCell>Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -264,15 +263,17 @@ const Express = () => {
                       <img src="images/meh.png" width="20%" alt="" />
                     )}
                   </TableCell>
-                  <TableCell>
-                    {singleNote.score > 4 && (
+                  <TableCell className="recommendations">
+                    {singleNote.score > 3 && (
                       <p>Stay Positive, you are doing great</p>
                     )}
-                    {singleNote.score < 0 && (
+                    {singleNote.score < 2 && (
                       <p>
                         I am sorry that you are feeling this way, would you like
                         to listen to <Link to="/mediate">Music</Link> or{" "}
-                        <Link to="/walk">Find a yoga or acupuncture</Link>
+                        <Link to="/walk">
+                          Find a yoga, acupuncture or go for a walk
+                        </Link>
                       </p>
                     )}
                     {singleNote.score === 0 && (
@@ -282,7 +283,7 @@ const Express = () => {
                   <TableCell>
                     {" "}
                     <Button
-                      className="delete-button"
+                      id="delete-button"
                       onClick={() => deleteSingleNoteHandler(singleNote.id)}
                     >
                       Delete

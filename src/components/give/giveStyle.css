@@ -1,0 +1,18 @@
+.give-section {
+  /* width: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.give-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  padding: 60px;
+}
+
+.give-item img {
+  width: 100%;
+}

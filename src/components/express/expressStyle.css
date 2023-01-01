@@ -122,66 +122,17 @@ Table {
   background-color: #669db3ff;
   color: black;
 }
-/* .question-answer-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
+#delete-button {
+  background-color: #8d8741;
+  color: black;
+}
 
-/* .emotion-title {
-  display: flex;
-  flex-direction: column;
-} */
-/* 
-.question-answer-section {
-  padding-left: 90px;
-} */
+.recommendations a {
+  color: darkblue;
+  text-decoration: none;
+}
 
-/* .speak,
-.stop-button {
-  padding: 20px;
-} */
-
-/* .buttons-section {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-} */
-/* .save-note-button Button,
-.start-stop-button Button,
-.old-feeling-button Button {
-  color: #000000;
-  border-radius: 10px / 30px;
-  width: 200px;
-  margin: 20px;
-} */
-
-/* .save-note-button button {
-  background-color: #669db3ff;
-} */
-
-/* .start-stop-button button {
-  background-color: #ff4f58ff;
-} */
-
-/* .old-feeling-button {
-  background-color: #9ed9ccff;
-} */
-/* .speaking-notes {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-} */
-/* .current-speaking-notes {
-  border: 1px solid rgb(152, 146, 146);
-  width: 60%;
-  border-radius: 5px 20px 5px;
-} */
-
-/* .old-notes-section {
-  width: 30%;
-  display: flex;
-  justify-content: start;
-  flex-direction: row;
-} */
+.recommendations a:hover {
+  background-color: rgb(180, 192, 160);
+  font-weight: bold;
+}
