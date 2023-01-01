@@ -4,18 +4,21 @@
   margin: 0;
 }
 
-.site-title {
-  font-size: 30px;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+.site-img img {
+  width: 60%;
+  margin: auto;
+  border-radius: 30%;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(62, 8, 68, 0.7);
 }
 .nav {
   background-color: rgb(240, 212, 246);
   color: rgb(25, 23, 23);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   /* gap: 2em; */
-  padding: 2rem 1rem;
+  /* padding: 2rem 1rem; */
   font-family: Montserrat, Impact, Haettenschweiler, "Arial Narrow Bold",
     sans-serif;
   position: sticky;
@@ -29,12 +32,8 @@
   /* justify-content: space-between; */
   gap: 10rem;
 }
-.nav ul li {
-  /* justify-content: space-between; */
-
-  /* padding: 20px; */
-
-  /* justify-content: space-around; */
+.nav ul li a {
+  font-weight: bold;
 }
 .nav a {
   color: inherit;

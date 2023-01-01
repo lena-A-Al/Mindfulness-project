@@ -14,6 +14,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Link } from "react-router-dom";
 
 const speechRecognition =
   window.speechRecognition || window.webkitSpeechRecognition;
@@ -253,23 +254,15 @@ const Express = () => {
                   <TableCell>
                     {singleNote.score}
                     {singleNote.score > 4 && (
-                      <img src="images/smile.png" width="10%" alt="" />
+                      <img src="images/smile.png" width="20%" alt="" />
                     )}
 
                     {singleNote.score < 0 && (
-                      <img src="images/sad.png" width="10%" alt="" />
+                      <img src="images/sad.png" width="20%" alt="" />
                     )}
                     {singleNote.score === 0 && (
-                      <img src="images/meh.png" width="10%" alt="" />
+                      <img src="images/meh.png" width="20%" alt="" />
                     )}
-                    {/* {singleNote.score}
-                    {singleNote.score < 2 ? (
-                      <img src="images/sad.png" width="10%" alt="" />
-                    ) : singleNote.score > 2 && singleNote.score < 3 ? (
-                      <img src="images/meh.png" width="10%" alt="" />
-                    ) : (
-                      <img src="images/smile.png" width="10%" alt="" />
-                    )} */}
                   </TableCell>
                   <TableCell>
                     {singleNote.score > 4 && (
@@ -278,7 +271,8 @@ const Express = () => {
                     {singleNote.score < 0 && (
                       <p>
                         I am sorry that you are feeling this way, would you like
-                        to listen to music
+                        to listen to <Link to="/mediate">Music</Link> or{" "}
+                        <Link to="/walk">Find a yoga or acupuncture</Link>
                       </p>
                     )}
                     {singleNote.score === 0 && (
@@ -299,90 +293,7 @@ const Express = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        {/* {notes.map((singleNote) => (
-          <div key={singleNote.id} className="analysis-notes-section">
-            <div>
-              <p key={singleNote.id}>{singleNote.note}</p>
-            </div>{" "}
-            <div>
-              {" "}
-              <Button onClick={() => deleteSingleNoteHandler(singleNote.id)}>
-                Delete
-              </Button>
-            </div>
-            <div>
-              {" "}
-              <Button>Edit</Button>
-            </div>
-          </div>
-        ))} */}
       </>
-      {/* <div className="question-answer-section">
-        <div>
-          <Tooltip
-            title={
-              <>
-                <div className="emotion-title">
-                  <div>
-                    <h2>[Express your feeling freely!!]</h2>
-                  </div>
-                  <div>
-                    <img src="images/emotion.png" alt="emotion" width="25%" />
-                  </div>
-                </div>
-              </>
-            }
-          >
-            <div>
-              <h2>How do you feel today?</h2>
-            </div>
-          </Tooltip>
-        </div>
-        <div>
-          {isListening ? (
-            <div className="speak">
-              <img src="images/speak.png" width="20%" alt="" />
-            </div>
-          ) : (
-            <div className="stop-button">
-              <img src="images/stop-button.png" width="10%" alt="" />
-            </div>
-          )}
-        </div>
-
-        <div className="buttons-section">
-          <div className="save-note-button">
-            <Button onClick={handleSaveNote} disabled={!note}>
-              Save Note
-            </Button>
-          </div>
-          <div className="start-stop-button">
-            <Button
-              onClick={() => setIsListening((previousState) => !previousState)}
-            >
-              Start/Stop
-            </Button>
-          </div>
-          <div className="old-feeling-button">
-            <Button>Old Feelings</Button>
-          </div>
-        </div>
-
-        <div className="old-notes-section">
-          {notes.map((singleNote) => (
-            <div key={singleNote.id}>
-              <Button onClick={() => deleteSingleNoteHandler(singleNote.id)}>
-                Delete
-              </Button>
-              <Button>Edit</Button>
-              <p key={singleNote.id}>{singleNote.note}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="speaking-notes">
-        <p className="current-speaking-notes">{note}</p>
-      </div> */}
     </>
   );
 };
