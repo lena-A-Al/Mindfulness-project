@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   notes: [],
+  scores: [],
 };
 
 const noteSlice = createSlice({
@@ -18,10 +19,13 @@ const noteSlice = createSlice({
         }),
       ];
     },
+    setScore: (state, action) => {
+      state.scores = action.payload;
+    },
   },
 });
 
 //Actions Creators
-export const { setNotes, setDeleteNote } = noteSlice.actions;
+export const { setNotes, setDeleteNote, setScore } = noteSlice.actions;
 
 export default noteSlice.reducer;

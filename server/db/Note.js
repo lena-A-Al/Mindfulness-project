@@ -1,5 +1,5 @@
 const db = require("./db");
-const { TEXT, UUID, UUIDV4, DATE } = db.Sequelize;
+const { TEXT, UUID, UUIDV4, DATE, INTEGER } = db.Sequelize;
 
 const Note = db.define("note", {
   // id: {
@@ -9,6 +9,10 @@ const Note = db.define("note", {
   // },
   note: {
     type: TEXT,
+    allowNull: true,
+  },
+  score: {
+    type: INTEGER,
     allowNull: true,
   },
   // myDate: {

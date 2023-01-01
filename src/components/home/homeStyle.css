@@ -1,3 +1,10 @@
+html,
+body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .main-page-color {
   background-color: rgb(243, 248, 245);
 }
@@ -33,6 +40,11 @@ footer {
   color: rgb(49, 44, 44);
   line-height: 1.5;
   padding: 50px;
+  margin-top: auto;
+}
+
+.ft-social {
+  margin-top: auto;
 }
 
 .ft-social-list {
@@ -40,6 +52,7 @@ footer {
   justify-content: center;
   align-items: center;
   padding: 0 50px;
+  /* margin-top: auto; */
 }
 .ft-social-list li {
   padding: 0 50px;

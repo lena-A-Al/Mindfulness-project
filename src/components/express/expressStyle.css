@@ -12,8 +12,8 @@ body {
 .express-section {
   padding: 80px 30px;
   display: flex;
-  justify-content: left;
-  align-items: left;
+  justify-content: center;
+  align-items: center;
 }
 .express-section .first-image img {
   width: 200px;
@@ -22,11 +22,14 @@ body {
 
 .express-title-section {
   background-color: rgb(243, 248, 245);
+  width: 60%;
+  text-align: center;
 }
 .express-title-section h2,
 .express-title-section p {
   padding: 20px;
   line-height: 2;
+  margin: auto;
 }
 
 .question-section,
@@ -62,6 +65,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 30px;
 }
 
 .present-speaking-notes {
@@ -74,7 +78,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px;
+  /* padding: 30px; */
 }
 
 .loading-message,
@@ -82,11 +86,41 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  /* padding: 20px; */
 }
 
 .loading-message h3 {
   color: blueviolet;
+}
+
+.save-note-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.save-note-button Button {
+  background-color: #9ed9ccff;
+  color: #000000;
+  border-radius: 10px / 30px;
+}
+
+.analysis-notes-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table,
+Table {
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: scroll;
+}
+
+.delete-button {
+  background-color: #669db3ff;
+  color: black;
 }
 /* .question-answer-section {
   display: flex;

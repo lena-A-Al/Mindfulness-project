@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./expressStyle.css";
-import { setNotes, setDeleteNote } from "../../store/noteSlice.js";
+import { setNotes, setDeleteNote, setScore } from "../../store/noteSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 const speechRecognition =
   window.speechRecognition || window.webkitSpeechRecognition;
@@ -14,9 +21,10 @@ const speechRecognition =
 const mic = new speechRecognition();
 mic.continuous = true;
 mic.interimResults = true;
-
 mic.lang = "en-US";
+
 const Express = () => {
+  // for measure sentimnet in user text.
   let Sentiment = require("sentiment");
   let sentiment = new Sentiment();
 
@@ -31,21 +39,20 @@ const Express = () => {
   const [savedNotes, setSavedNotes] = useState([]);
   const [feelingStatus, setFeelingStatus] = useState("");
   const [showOldNotes, setShowOldNotes] = useState(false);
+  const [scoreAnalysis, setScoreAnalysis] = useState(
+    sentiment.analyze(scoreAnalysis)
+  );
+
+  console.log(scoreAnalysis);
 
   //Selectors
   //transfer or save the local notes in the redux state.
   const notes = useSelector((state) => state.note.notes);
+  const scores = useSelector((state) => state.note.scores);
 
   useEffect(() => {
     handleListen();
   }, [isListening]);
-
-  // useEffect(() => {
-  //   if (notes.length) {
-  //     let result = sentiment.analyze(notes);
-  //     console.dir(result);
-  //   }
-  // }, [notes]);
 
   const handleListen = () => {
     //if is listening is true, start the mic
@@ -74,6 +81,7 @@ const Express = () => {
         .join("");
       console.log(transcript);
       setNote(transcript);
+      setScoreAnalysis(sentiment.analyze(transcript));
       mic.onerror = (event) => {
         console.log(event.error);
       };
@@ -106,19 +114,20 @@ const Express = () => {
    */
   const handleSaveNote = async () => {
     //call the post api to save notes.
-    await axios.post(`/api/notes`, { note });
+    const score = scoreAnalysis.score;
+    await axios.post(`/api/notes`, { note, score });
     const response = await axios.get("/api/notes");
     console.log(response);
     //first save the notes locally, then save them in redux state.
     setSavedNotes([...savedNotes, note]);
     dispatch(setNotes(response.data));
-    console.log(response.data[0].note);
-    console.log(response.data);
-    let result = sentiment.analyze(response.data[0].note);
-    console.dir(result);
+    dispatch(setScore(score));
+    console.log(score);
+
     setNote("");
   };
-
+  console.log(notes);
+  console.log(scores);
   return (
     <>
       <div className="express-section">
@@ -204,6 +213,110 @@ const Express = () => {
           </h5>
         )}
       </div>
+
+      {note.length > 0 && (
+        <div className="save-note-button">
+          <Button onClick={handleSaveNote} disabled={!note}>
+            Save Note
+          </Button>
+        </div>
+      )}
+
+      <>
+        <TableContainer className="table" component={Paper}>
+          <Table
+            className="table"
+            sx={{ width: "50%" }}
+            aria-label="simple table"
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>Date</TableCell>
+                <TableCell>Your Feelings</TableCell>
+                <TableCell>Emotion Status</TableCell>
+                <TableCell>Our recommendation</TableCell>
+                <TableCell>Update</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {notes.map((singleNote) => (
+                <TableRow
+                  key={singleNote.id}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell component="th" scope="row">
+                    {new Date().toLocaleString() + ""}
+                  </TableCell>
+                  <TableCell component="th" scope="row">
+                    {singleNote.note}
+                  </TableCell>
+                  <TableCell>
+                    {singleNote.score}
+                    {singleNote.score > 4 && (
+                      <img src="images/smile.png" width="10%" alt="" />
+                    )}
+
+                    {singleNote.score < 0 && (
+                      <img src="images/sad.png" width="10%" alt="" />
+                    )}
+                    {singleNote.score === 0 && (
+                      <img src="images/meh.png" width="10%" alt="" />
+                    )}
+                    {/* {singleNote.score}
+                    {singleNote.score < 2 ? (
+                      <img src="images/sad.png" width="10%" alt="" />
+                    ) : singleNote.score > 2 && singleNote.score < 3 ? (
+                      <img src="images/meh.png" width="10%" alt="" />
+                    ) : (
+                      <img src="images/smile.png" width="10%" alt="" />
+                    )} */}
+                  </TableCell>
+                  <TableCell>
+                    {singleNote.score > 4 && (
+                      <p>Stay Positive, you are doing great</p>
+                    )}
+                    {singleNote.score < 0 && (
+                      <p>
+                        I am sorry that you are feeling this way, would you like
+                        to listen to music
+                      </p>
+                    )}
+                    {singleNote.score === 0 && (
+                      <p>It is ok to feel netural, stay strong and positie!!</p>
+                    )}
+                  </TableCell>
+                  <TableCell>
+                    {" "}
+                    <Button
+                      className="delete-button"
+                      onClick={() => deleteSingleNoteHandler(singleNote.id)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        {/* {notes.map((singleNote) => (
+          <div key={singleNote.id} className="analysis-notes-section">
+            <div>
+              <p key={singleNote.id}>{singleNote.note}</p>
+            </div>{" "}
+            <div>
+              {" "}
+              <Button onClick={() => deleteSingleNoteHandler(singleNote.id)}>
+                Delete
+              </Button>
+            </div>
+            <div>
+              {" "}
+              <Button>Edit</Button>
+            </div>
+          </div>
+        ))} */}
+      </>
       {/* <div className="question-answer-section">
         <div>
           <Tooltip

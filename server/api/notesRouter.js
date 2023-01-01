@@ -13,8 +13,8 @@ router.get("/", async (req, res, next) => {
 //POST localhost:3000/api/notes
 router.post("/", async (req, res, next) => {
   try {
-    const { note } = req.body;
-    const newNote = await Note.create({ note });
+    const { note, score } = req.body;
+    const newNote = await Note.create({ note, score });
     res.sendStatus(204);
   } catch (err) {
     return res.status(501).send(err.message);
