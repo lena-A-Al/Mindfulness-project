@@ -45,7 +45,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
       {/* when we write the address in the input, we want to show it in the map; we use comboboxPopover */}
       <ComboboxPopover>
         {/* inside ComboboxList will show the list of addresses if the status is ok */}
-        <ComboboxList>
+        <ComboboxList className="list-option">
           {status === "OK" &&
             data.map(({ place_id, description }) => (
               <ComboboxOption key={place_id} value={description} />

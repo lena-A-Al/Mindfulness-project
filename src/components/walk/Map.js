@@ -31,8 +31,8 @@ const Map = () => {
   };
 
   return (
-    <>
-      <div>
+    <div className="google-map">
+      <div className="places-section">
         <PlacesAutocomplete setSelected={setSelected} />
       </div>
       {/* GoogleMap is a component that needs at least 3 props to work correctly.
@@ -60,7 +60,7 @@ const Map = () => {
           />
         )}
       </GoogleMap>
-    </>
+    </div>
   );
 };
 
