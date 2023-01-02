@@ -138,11 +138,11 @@ const Express = () => {
           />
         </div>
         <div className="express-title-section">
-          <h2>Exress your feeling and let me help you</h2>
+          <h2>Express your feeling and let me help you</h2>
           <p>
             Life can get into the way, and you do not have time to write; still
             you should dedicate some times to at least express your thoughts and
-            feeling.
+            feelings.
           </p>
         </div>
       </div>
@@ -160,10 +160,10 @@ const Express = () => {
             <>
               <div className="emotion-title">
                 <div>
-                  <h2>[Express your feeling freely!!]</h2>
-                </div>
-                <div>
-                  <img src="images/emotion.png" alt="emotion" width="25%" />
+                  <p>
+                    press start button, express your feeling outloud, then press
+                    stop button when complete!!
+                  </p>
                 </div>
               </div>
             </>
@@ -187,9 +187,10 @@ const Express = () => {
             <img src="images/speak.png" width="5%" alt="" />
           </div>
         ) : (
-          <div className="stop-icon">
-            <img src="images/stop-button.png" width="5%" alt="" />
-          </div>
+          ""
+          // <div className="stop-icon">
+          //   <img src="images/stop-button.png" width="5%" alt="" />
+          // </div>
         )}
       </div>
 
@@ -259,25 +260,29 @@ const Express = () => {
                     {singleNote.score < 0 && (
                       <img src="images/sad.png" width="20%" alt="" />
                     )}
-                    {singleNote.score === 0 && (
+                    {singleNote.score >= 0 && singleNote.score < 4 && (
                       <img src="images/meh.png" width="20%" alt="" />
                     )}
                   </TableCell>
                   <TableCell className="recommendations">
-                    {singleNote.score > 3 && (
+                    {singleNote.score > 4 && (
                       <p>Stay Positive, you are doing great</p>
                     )}
-                    {singleNote.score < 2 && (
+                    {singleNote.score >= 0 && singleNote.score < 4 && (
                       <p>
-                        I am sorry that you are feeling this way, would you like
-                        to listen to <Link to="/mediate">Music</Link> or{" "}
-                        <Link to="/walk">
-                          Find a yoga, acupuncture or go for a walk
-                        </Link>
+                        It is ok to feel netural, stay strong and positive!!
                       </p>
                     )}
-                    {singleNote.score === 0 && (
-                      <p>It is ok to feel netural, stay strong and positie!!</p>
+                    {singleNote.score < 0 && (
+                      <p>
+                        I am sorry that you are feeling this way, would you like
+                        to listen to <Link to="/mediate">mediate to music</Link>{" "}
+                        or{" "}
+                        <Link to="/walk">
+                          Find a yoga studio, acupuncture therapist or go for a
+                          walk
+                        </Link>
+                      </p>
                     )}
                   </TableCell>
                   <TableCell>

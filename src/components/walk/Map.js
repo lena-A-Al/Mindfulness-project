@@ -21,8 +21,7 @@ const Map = () => {
   const center = useMemo(() => ({ lat: 40.76852, lng: -73.95591 }), []);
 
   //Local states:
-
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState({ lat: 40.76852, lng: -73.95591 });
 
   const options = {
     styles: mapStyles,
@@ -42,7 +41,7 @@ const Map = () => {
       container of where the map will be placed in the component.  */}
       <GoogleMap
         zoom={10}
-        center={{ lat: 40.76852, lng: -73.95591 }}
+        center={selected}
         mapContainerClassName="map-container"
         options={options}
       >
@@ -50,7 +49,7 @@ const Map = () => {
       we need to give it some props to position it correctly in the map */}
         {selected && (
           <Marker
-            position={center}
+            position={selected}
             icon={{
               url: "images/mapPointer.jpg",
               scaledSize: new window.google.maps.Size(80, 80),

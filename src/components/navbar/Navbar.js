@@ -9,13 +9,13 @@ const Navbar = () => {
           <img src="images/mindfulness-3.jpg" alt="website-logo" />
           {/* <h3>MINDFULness</h3> */}
         </div>
-        <div>
+        <div className="unoredered-list">
           <ul>
             <li>
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/express">Expresss YourFeeling</Link>
+              <Link to="/express">Expresss YourSelf</Link>
             </li>
             <li>
               <Link to="/mediate">Mediate</Link>

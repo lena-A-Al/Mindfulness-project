@@ -9,13 +9,18 @@ const seed = async () => {
 
   const [leah] = await Promise.all([
     User.create({
-      username: "leah",
+      username: "lena",
       password: "123",
       email: "leah123@gmail.com",
       isAdmin: true,
     }),
+    User.create({
+      username: "steve",
+      password: "123",
+      email: "steve123@gmail.com",
+      isAdmin: true,
+    }),
   ]);
-  console.log(leah);
   console.log("DONE RUNNING SEED...");
 };
 

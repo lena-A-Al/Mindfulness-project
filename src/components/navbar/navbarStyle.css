@@ -31,12 +31,15 @@
   padding: 10px;
   box-shadow: 2px 2px 2px 1px rgba(175, 162, 176, 0.7);
 }
-
+.unoredered-list {
+  display: flex;
+}
 .nav ul {
   list-style: none;
   display: flex;
-  /* justify-content: space-between; */
-  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
   gap: 10rem;
 }
 .nav ul li a {

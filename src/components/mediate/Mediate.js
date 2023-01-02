@@ -18,7 +18,6 @@ const Mediate = () => {
 
   return (
     <>
-      <ReactAudioPlayer src={music} controls />
       <div
         style={{
           display: "flex",
@@ -28,15 +27,17 @@ const Mediate = () => {
       >
         <label>Select Music:</label>
         <select onChange={handleSongSelect} style={{ margin: "20px" }}>
-          <option value="music/Beethoven_12_Variation.mp3">Music1</option>
+          <option value="music/Beethoven_12_Variation.mp3">Classical</option>
           <option value="music/give-me-new-inspiration-131488.mp3">
-            Music2
+            Inspirational
           </option>
-          <option value="music/happy-dream-131364.mp3">Music3</option>
-          <option value="music/meditation-sounds-122698.mp3">Music4</option>
-          <option value="music/relaxing-music-vol12-131317.mp3">Music5</option>
-          <option value="music/slow-motion-121841.mp3">Music6</option>
-          <option value="music/spirit-blossom-15285.mp3">Music7</option>
+          <option value="music/happy-dream-131364.mp3">Happy</option>
+          <option value="music/meditation-sounds-122698.mp3">Meditation</option>
+          <option value="music/relaxing-music-vol12-131317.mp3">
+            Relaxing
+          </option>
+          <option value="music/slow-motion-121841.mp3">Slow</option>
+          <option value="music/spirit-blossom-15285.mp3">Spiritual</option>
         </select>
 
         <label>Select Image:</label>
@@ -53,6 +54,15 @@ const Mediate = () => {
           <option value="gifs/beach-bonfire.gif">Beach</option>
           <option value="gifs/float-animal.gif">Otters</option>
         </select>
+      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ReactAudioPlayer src={music} controls />
       </div>
 
       <div
