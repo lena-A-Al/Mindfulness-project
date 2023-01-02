@@ -63,7 +63,14 @@ const Login = () => {
       <div className="form-section">
         <form onSubmit={handleLoginSubmit}>
           <div className="website-name">
-            <h3>MINDFULness</h3>
+            <h3>
+              {/* MINDFULness{" "} */}
+              <img
+                src="images/mindfulness-3.jpg"
+                alt="website-logo"
+                width="40%"
+              />
+            </h3>
           </div>{" "}
           <Box
             display="flex"

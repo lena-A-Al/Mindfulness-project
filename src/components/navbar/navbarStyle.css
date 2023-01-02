@@ -4,12 +4,10 @@
   margin: 0;
 }
 
-.site-img img {
-  width: 60%;
+.container {
+  width: 90%;
   margin: auto;
-  border-radius: 30%;
-  padding: 10px;
-  box-shadow: 2px 2px 2px 1px rgba(62, 8, 68, 0.7);
+  display: flex;
 }
 .nav {
   background-color: #659dbd;
@@ -26,10 +24,19 @@
   z-index: 100;
 }
 
+.site-img img {
+  width: 60%;
+  margin: auto;
+  border-radius: 30%;
+  padding: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(175, 162, 176, 0.7);
+}
+
 .nav ul {
   list-style: none;
   display: flex;
   /* justify-content: space-between; */
+  padding: 10px;
   gap: 10rem;
 }
 .nav ul li a {
