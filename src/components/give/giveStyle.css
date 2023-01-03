@@ -17,7 +17,8 @@
 }
 
 .item-img img {
-  width: 100%;
+  height: 400px;
+  width: auto
 }
 .title-info {
   padding: 10px;
