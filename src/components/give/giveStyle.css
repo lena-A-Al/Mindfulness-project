@@ -1,18 +1,50 @@
 .give-section {
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .give-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   width: 50%;
   padding: 60px;
 }
 
-.give-item img {
+.give-item .item-img {
   width: 100%;
+}
+
+.give-item .item-img img {
+}
+
+.title-info {
+  padding: 10px;
+  text-align: center;
+}
+
+.title-info h2 {
+  padding: 10px;
+}
+
+.title-info p {
+  line-height: 2;
+}
+
+.item-img {
+  position: relative;
+}
+
+.image-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(198, 135, 135, 0.5);
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.item-img:hover .image-layout {
+  opacity: 1;
 }
