@@ -12,11 +12,13 @@
 
 .give-item .item-img {
   width: 100%;
+  text-align: center;
+  padding: 10px;
 }
 
-.give-item .item-img img {
+.item-img img {
+  width: 100%;
 }
-
 .title-info {
   padding: 10px;
   text-align: center;
@@ -40,9 +42,10 @@
   left: 0;
   bottom: 0;
   right: 0;
-  background-color: rgba(198, 135, 135, 0.5);
+  background-color: rgba(244, 232, 232, 0.5);
   opacity: 0;
   transition: opacity 1s;
+  width: 100%;
 }
 
 .item-img:hover .image-layout {
